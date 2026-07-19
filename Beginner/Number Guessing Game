@@ -1,0 +1,26 @@
+print("Welcome to The Number Guessing Game!")
+import random
+lowerbound = int(input(f"Choose a Lower Bound = "))
+higherbound = int(input(f"Choose a Higher Bound = "))
+print(f"Think of a number between {lowerbound} and {higherbound}:",end="\n")
+print(f"Try count =",end=" ")
+limit: int=int(input())
+number: int=random.randint(lowerbound,higherbound)
+tries=1
+while tries<=limit:
+    try:
+        guess: int=int(input("Your Guess = "))
+    except ValueError:
+        print(f"That is not a number! Try choosing a number!")
+        continue
+    if  number<guess:
+        print(f"Lower than {guess}. Try again!")
+    elif number>guess:
+        print(f"Higher than {guess}. Try another number!")
+    else:
+        print(f"You guessed the number correctly! Hooray!")
+        print(f"Congratulations! You did it in {tries} try!")
+        break
+    tries+=1
+else:
+    print(f"Oops! Out of tries! The number was {number}.")
