@@ -1,0 +1,55 @@
+import random
+print(f"Welcome to Rock, Paper and Scissors!")
+
+while True:
+ try:
+    rounds=int(input(f"How many rounds will the game consist of?\n"))
+    if rounds<=0:
+        print(f"Please enter a positive number!")
+        continue
+    break
+ except ValueError:
+    print("Please enter a number!")
+
+totalrounds=rounds
+
+choices=["Rock","Paper","Scissors"]
+scoreplayerone=0
+scoreplayertwo=0
+
+while rounds!=0:
+    print(f"Current Round = {totalrounds-rounds+1}")
+    playerone=random.choice(choices)
+    print(f"Player One's Choice = {playerone}")
+    playertwo=random.choice(choices)
+    print(f"Player Two's Choice = {playertwo}")
+
+    if playerone.lower()==playertwo.lower():
+        print(f"No one gets a point!")
+    elif playerone.lower()=="rock" and playertwo.lower()=="scissors":
+        print(f"Player One takes the point!")
+        scoreplayerone+=1
+    elif  playerone.lower()=="rock" and playertwo.lower()=="paper":
+        print(f"Player Two wins!")
+        scoreplayertwo+=1
+    elif  playerone.lower()=="scissors" and playertwo.lower()=="paper":
+        print(f"Player One takes the win!")
+        scoreplayerone+=1
+    elif  playerone.lower()=="scissors" and playertwo.lower()=="rock":
+         print(f"Player Two scores!")
+         scoreplayertwo+=1
+    elif  playerone.lower()=="paper" and playertwo.lower()=="rock":
+         print(f"Player One takes the point!")
+         scoreplayerone+=1
+    elif  playerone.lower()=="paper" and playertwo.lower()=="scissors":
+         print(f"Player Two wins!")
+         scoreplayertwo+=1
+    rounds-=1
+print(f"Player One's final score = {scoreplayerone}")
+print(f"Player Two's final score = {scoreplayertwo}")
+if scoreplayerone>scoreplayertwo:
+    print(f"Congratulations Player One! You have won the game!")
+elif scoreplayerone<scoreplayertwo:
+    print(f"Congratulations Player Two! You have won the game!")
+else:
+    print(f"Congratulations to both players! It seems like we have a tie!")
